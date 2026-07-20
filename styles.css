@@ -157,9 +157,9 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .zombie-feature-copy { position: absolute; left: 25px; right: 25px; bottom: 25px; display: flex; justify-content: space-between; align-items: end; gap: 35px; padding: 24px; border: 1px solid rgba(184, 76, 232, .6); background: rgba(12, 5, 20, .82); backdrop-filter: blur(10px); }
 .zombie-feature-copy span { flex: 0 0 auto; color: #ed83f6; font: 500 11px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
 .zombie-feature-copy p { max-width: 720px; margin: 0; color: #ded2e7; line-height: 1.55; }
-.zombie-gallery { display: grid; grid-template-columns: 1.5fr .75fr; gap: 22px; margin-top: 22px; }
+.zombie-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 22px; }
 .zombie-gallery figure { margin: 0; }
-.zombie-gallery img { width: 100%; height: 100%; max-height: 580px; object-fit: cover; border: 1px solid rgba(199, 93, 246, .3); }
+.zombie-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(199, 93, 246, .3); }
 .zombie-gallery figcaption { padding-top: 12px; color: #887b91; font: 10px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 .studio-section { background: #b9c3bd; color: var(--ink); padding: 130px 5vw; }
 .studio-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; }
@@ -208,8 +208,7 @@ footer p { margin: 0; }
   .zombie-feature-copy { position: static; display: block; border-width: 1px 0 0; }
   .zombie-feature-copy span { display: block; margin-bottom: 14px; }
   .zombie-gallery { grid-template-columns: 1fr; }
-  .zombie-gallery img { max-height: none; aspect-ratio: 16 / 9; }
-  .zombie-gallery .brief-card img { aspect-ratio: auto; }
+  .zombie-gallery img { aspect-ratio: 16 / 9; }
   .timeline { grid-template-columns: 1fr; margin-top: 80px; }
   .timeline-item { min-height: auto; padding: 30px 0 40px; border-right: 0; border-bottom: 1px solid rgba(10,13,18,.35); }
   .timeline-item + .timeline-item { padding-left: 0; }
