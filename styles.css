@@ -43,11 +43,12 @@ img { display: block; width: 100%; }
   font: 500 11px/1.05 "DM Mono", monospace;
   letter-spacing: .18em;
 }
-.brand-mark { display: flex; gap: 3px; width: 29px; height: 29px; transform: skew(-14deg); }
-.brand-mark i { display: block; width: 7px; background: currentColor; }
-.brand-mark i:nth-child(1) { height: 52%; align-self: end; }
-.brand-mark i:nth-child(2) { height: 100%; }
-.brand-mark i:nth-child(3) { height: 72%; align-self: start; }
+.brand-crow {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+}
 nav { display: flex; gap: 32px; font: 500 11px "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
 nav a { opacity: .72; transition: opacity .2s; }
 nav a:hover { opacity: 1; }
