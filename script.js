@@ -27,3 +27,27 @@ document.querySelectorAll(".reveal").forEach(function (element) {
 });
 
 document.querySelector("#year").textContent = String(new Date().getFullYear());
+
+const lightbox = document.querySelector("#image-lightbox");
+const lightboxImage = lightbox.querySelector("img");
+const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+document.querySelectorAll("[data-lightbox]").forEach(function (link) {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    const image = link.querySelector("img");
+    lightboxImage.src = link.href;
+    lightboxImage.alt = image.alt;
+    lightbox.showModal();
+  });
+});
+
+lightboxClose.addEventListener("click", function () {
+  lightbox.close();
+});
+
+lightbox.addEventListener("click", function (event) {
+  if (event.target === lightbox) {
+    lightbox.close();
+  }
+});

@@ -148,19 +148,28 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .zombie-section .section-number { color: #65e4ef; }
 .zombie-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; margin-bottom: 75px; }
 .zombie-heading h2 em { color: #d264f4; }
+.project-expansion { margin: 24px 0 0; color: #8d8197; font: 500 10px "DM Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
+.project-expansion span { color: #67e3ed; }
 .zombie-summary { padding-bottom: 10px; }
 .zombie-summary p { max-width: 560px; margin: 0 0 20px; color: #bcb0c6; font-size: 17px; line-height: 1.65; }
 .zombie-summary .zombie-tagline { color: #67e3ed; font-size: 20px; font-weight: 600; }
 .status-badge { display: inline-block; margin-top: 10px; padding: 9px 12px; border: 1px solid #9f42d2; color: #e488fa; font: 500 10px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
 .zombie-feature { position: relative; overflow: hidden; border: 1px solid rgba(199, 93, 246, .45); }
-.zombie-feature > img { aspect-ratio: 16 / 9; object-fit: cover; }
+.zombie-feature > .screenshot-link img { aspect-ratio: 16 / 9; object-fit: contain; }
 .zombie-feature-copy { position: absolute; left: 25px; right: 25px; bottom: 25px; display: flex; justify-content: space-between; align-items: end; gap: 35px; padding: 24px; border: 1px solid rgba(184, 76, 232, .6); background: rgba(12, 5, 20, .82); backdrop-filter: blur(10px); }
 .zombie-feature-copy span { flex: 0 0 auto; color: #ed83f6; font: 500 11px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
 .zombie-feature-copy p { max-width: 720px; margin: 0; color: #ded2e7; line-height: 1.55; }
 .zombie-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 22px; }
 .zombie-gallery figure { margin: 0; }
-.zombie-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid rgba(199, 93, 246, .3); }
+.zombie-gallery img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; border: 1px solid rgba(199, 93, 246, .3); }
 .zombie-gallery figcaption { padding-top: 12px; color: #887b91; font: 10px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.screenshot-link { display: block; background: #08040d; cursor: zoom-in; overflow: hidden; }
+.screenshot-link img { transition: filter .2s ease, transform .3s ease; }
+.screenshot-link:hover img { filter: brightness(1.08); transform: scale(1.006); }
+.lightbox { width: min(96vw, 1800px); max-width: none; padding: 0; border: 1px solid rgba(199, 93, 246, .7); background: #050308; box-shadow: 0 0 80px rgba(173, 58, 229, .25); }
+.lightbox::backdrop { background: rgba(2, 2, 5, .92); backdrop-filter: blur(8px); }
+.lightbox img { width: 100%; max-height: 92vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 10px 13px; border: 1px solid rgba(255,255,255,.35); color: white; background: rgba(5,3,8,.86); font: 500 10px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
 .studio-section { background: #b9c3bd; color: var(--ink); padding: 130px 5vw; }
 .studio-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; }
 .studio-copy { max-width: 580px; padding-bottom: 12px; }

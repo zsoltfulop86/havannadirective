@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260720-2">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -64,6 +64,7 @@
         <div>
           <p class="section-number">02 / First transmission</p>
           <h2 id="zombie-title">SS: Zombie<br><em>Rain</em></h2>
+          <p class="project-expansion"><span>SS</span> / Skyscraper Security</p>
         </div>
         <div class="zombie-summary">
           <p class="zombie-tagline">Street-level rescue defense beneath the secret tower.</p>
@@ -73,7 +74,9 @@
       </div>
 
       <div class="zombie-feature reveal">
-        <img src="assets/zombie-rain-01.png" alt="First-person rescue defense gameplay in SS: Zombie Rain">
+        <a class="screenshot-link" href="assets/zombie-rain-01.png" data-lightbox>
+          <img src="assets/zombie-rain-01.png" alt="First-person rescue defense gameplay in SS: Zombie Rain">
+        </a>
         <div class="zombie-feature-copy">
           <span>Containment brief</span>
           <p>Shoot the infected before they reach the rescue net. Save the humans. Keep the city from learning what lives above it.</p>
@@ -82,11 +85,15 @@
 
       <div class="zombie-gallery">
         <figure class="reveal">
-          <img src="assets/zombie-rain-level-up.png" alt="Choosing a level-up implant between waves in SS: Zombie Rain">
+          <a class="screenshot-link" href="assets/zombie-rain-level-up.png" data-lightbox>
+            <img src="assets/zombie-rain-level-up.png" alt="Choosing a level-up implant between waves in SS: Zombie Rain">
+          </a>
           <figcaption>Evolve your build between waves</figcaption>
         </figure>
         <figure class="reveal">
-          <img src="assets/zombie-rain-shop.png" alt="Buying equipment and rerolling the shop between waves in SS: Zombie Rain">
+          <a class="screenshot-link" href="assets/zombie-rain-shop.png" data-lightbox>
+            <img src="assets/zombie-rain-shop.png" alt="Buying equipment and rerolling the shop between waves in SS: Zombie Rain">
+          </a>
           <figcaption>Spend, reroll, and prepare for the next assault</figcaption>
         </figure>
       </div>
@@ -192,6 +199,11 @@
     <p>© <span id="year"></span> Havanna Directive Ltd.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <dialog class="lightbox" id="image-lightbox" aria-label="Expanded game screenshot">
+    <button class="lightbox-close" type="button" aria-label="Close expanded screenshot">Close ×</button>
+    <img src="" alt="">
+  </dialog>
+
+  <script src="script.js?v=20260720-2"></script>
 </body>
 </html>
