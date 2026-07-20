@@ -58,7 +58,7 @@ nav a:hover { opacity: 1; }
 .hero-media img { height: 100%; object-fit: cover; filter: saturate(.7) contrast(1.08); transform: scale(1.02); }
 .hero-shade {
   background:
-    linear-gradient(90deg, rgba(7,10,15,.91) 0%, rgba(7,10,15,.48) 50%, rgba(7,10,15,.13) 100%),
+    linear-gradient(90deg, rgba(7,10,15,.96) 0%, rgba(7,10,15,.68) 48%, rgba(7,10,15,.16) 100%),
     linear-gradient(0deg, rgba(7,10,15,.75) 0%, transparent 38%);
 }
 .hero-content { position: relative; z-index: 2; padding: 29vh 5vw 10vh; max-width: 920px; }
@@ -114,7 +114,7 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .button-primary:hover { background: var(--signal); border-color: var(--signal); }
 .button-quiet:hover { background: #ddd9cf; }
 .game-feature { position: relative; }
-.game-feature img { height: min(70vw, 780px); object-fit: cover; }
+.game-feature img { aspect-ratio: 3840 / 1240; min-height: 320px; object-fit: cover; object-position: center; }
 .feature-label {
   display: flex;
   justify-content: space-between;
@@ -134,8 +134,10 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .image-card { padding: 0; overflow: hidden; }
 .image-card img { height: 100%; object-fit: cover; transition: transform .7s ease; }
 .image-card:hover img { transform: scale(1.025); }
-.human-made { display: grid; grid-template-columns: 1fr 3fr; gap: 5vw; margin-top: 130px; padding-top: 30px; border-top: 1px solid #b7b4ac; }
-.human-made blockquote { margin: 0; font: italic 400 clamp(36px, 5.5vw, 84px)/1.08 Georgia, serif; letter-spacing: -.045em; }
+.mbw-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 22px; }
+.mbw-gallery figure { margin: 0; }
+.mbw-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid #c6c2b8; }
+.mbw-gallery figcaption { padding-top: 12px; color: #74767a; font: 10px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 
 .zombie-section {
   padding: 130px 5vw;
@@ -197,11 +199,11 @@ footer p { margin: 0; }
   .manifesto, .game-section, .zombie-section, .studio-section, .contact-section { padding-left: 22px; padding-right: 22px; }
   .manifesto { padding-top: 100px; padding-bottom: 110px; }
   .game-heading, .zombie-heading, .studio-layout { grid-template-columns: 1fr; gap: 50px; }
-  .game-feature img { height: 70vh; }
+  .game-feature img { aspect-ratio: 16 / 9; min-height: 0; }
   .game-grid { grid-template-columns: 1fr; margin-top: 70px; }
   .game-card { min-height: 330px; padding: 28px; }
   .image-card { min-height: 260px; }
-  .human-made { grid-template-columns: 1fr; margin-top: 90px; }
+  .mbw-gallery { grid-template-columns: 1fr; }
   .zombie-feature-copy { position: static; display: block; border-width: 1px 0 0; }
   .zombie-feature-copy span { display: block; margin-bottom: 14px; }
   .zombie-gallery { grid-template-columns: 1fr; }
