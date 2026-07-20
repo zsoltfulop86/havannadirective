@@ -133,6 +133,7 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .game-card p { max-width: 480px; margin: 0; color: #606266; line-height: 1.6; }
 .card-index { margin-bottom: auto; font: 11px "DM Mono", monospace; color: var(--signal); }
 .image-card { padding: 0; overflow: hidden; }
+.image-card .screenshot-link { height: 100%; }
 .image-card img { height: 100%; object-fit: cover; transition: transform .7s ease; }
 .image-card:hover img { transform: scale(1.025); }
 .mbw-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 22px; }
