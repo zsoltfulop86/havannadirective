@@ -28,14 +28,19 @@ img { display: block; width: 100%; }
 }
 
 .site-header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
-  z-index: 10;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 28px 4vw;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: padding .25s ease, background .25s ease, border-color .25s ease;
 }
+.site-header.scrolled, .site-header.menu-open { background: rgba(9,12,18,.9); border-bottom-color: var(--line); backdrop-filter: blur(16px); }
+.site-header.scrolled { padding: 16px 4vw; }
 .brand {
   display: inline-flex;
   align-items: center;
@@ -72,6 +77,7 @@ nav > a:hover, nav > a:focus-visible, .games-menu summary:hover, .games-menu sum
 .games-menu-panel a:hover, .games-menu-panel a:focus-visible { color: white; background: rgba(255,255,255,.06); opacity: 1; }
 .games-menu summary:focus-visible, .games-menu-panel a:focus-visible { outline: 1px solid var(--ice); outline-offset: 3px; }
 .menu-toggle { display: none; }
+section[id] { scroll-margin-top: 92px; }
 
 .hero { position: relative; min-height: 100svh; overflow: hidden; }
 .hero-media, .hero-shade { position: absolute; inset: 0; }
@@ -227,8 +233,9 @@ footer p { margin: 0; }
 
 @media (max-width: 800px) {
   .site-header { padding: 22px; }
+  .site-header.scrolled { padding: 14px 22px; }
   .menu-toggle { display: block; color: white; border: 1px solid rgba(255,255,255,.4); background: transparent; padding: 9px 12px; font: 10px "DM Mono", monospace; text-transform: uppercase; }
-  nav { position: absolute; top: 75px; left: 20px; right: 20px; display: none; align-items: stretch; flex-direction: column; gap: 20px; padding: 25px; background: rgba(9,12,18,.96); border: 1px solid var(--line); }
+  nav { position: absolute; top: 100%; left: 20px; right: 20px; display: none; align-items: stretch; flex-direction: column; gap: 20px; padding: 25px; background: rgba(9,12,18,.96); border: 1px solid var(--line); }
   nav.open { display: flex; }
   nav > a, .games-menu summary { width: fit-content; }
   .games-menu-panel { position: static; min-width: 0; margin-top: 14px; padding: 4px 0 0 14px; background: transparent; border: 0; border-left: 1px solid var(--line); box-shadow: none; }

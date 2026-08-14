@@ -1,10 +1,19 @@
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#site-nav");
 const gamesMenu = document.querySelector(".games-menu");
+const siteHeader = document.querySelector(".site-header");
+
+function updateHeaderState() {
+  siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+}
+
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+updateHeaderState();
 
 menuButton.addEventListener("click", function () {
   const isOpen = navigation.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
+  siteHeader.classList.toggle("menu-open", isOpen);
   if (!isOpen) {
     gamesMenu.removeAttribute("open");
   }
@@ -14,6 +23,7 @@ navigation.querySelectorAll("a").forEach(function (link) {
   link.addEventListener("click", function () {
     navigation.classList.remove("open");
     gamesMenu.removeAttribute("open");
+    siteHeader.classList.remove("menu-open");
     menuButton.setAttribute("aria-expanded", "false");
   });
 });
