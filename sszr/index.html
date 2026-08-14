@@ -6,6 +6,7 @@
   <meta name="description" content="Worldwide anonymous player-death counter for SS: Zombie Rain.">
   <meta name="theme-color" content="#07040d">
   <meta name="sszr-api-url" content="https://sszr-api.silverkobra.workers.dev/v1/deaths">
+  <meta name="sszr-leaderboards-api-url" content="https://sszr-api.silverkobra.workers.dev/v1/leaderboards">
   <meta property="og:title" content="SS: Zombie Rain — Worldwide Defender Deaths">
   <meta property="og:description" content="The live worldwide player-death counter for SS: Zombie Rain.">
   <meta property="og:image" content="https://havannadirective.com/assets/zombie-rain-01.png">
@@ -16,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815-3">
+  <link rel="stylesheet" href="styles.css?v=20260815-4">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -57,6 +58,48 @@
       </div>
     </section>
 
+    <section class="leaderboards" aria-labelledby="leaderboards-title">
+      <div class="leaderboards-heading">
+        <div>
+          <p class="section-label">Worldwide personal bests</p>
+          <h2 id="leaderboards-title">Defender<br><em>records.</em></h2>
+        </div>
+        <p>One best run per anonymous defender, difficulty, and season. Scores are calculated by the containment network from wave reached, rescues, eliminations, district integrity, and victory.</p>
+      </div>
+
+      <div class="leaderboard-shell">
+        <div class="leaderboard-toolbar">
+          <div class="leaderboard-tabs" role="tablist" aria-label="Leaderboard difficulty">
+            <button type="button" role="tab" aria-selected="true" data-leaderboard-tab="normal">Normal</button>
+            <button type="button" role="tab" aria-selected="false" data-leaderboard-tab="hard">Hard</button>
+          </div>
+          <p id="leaderboard-season">Preseason 1 · Top 100</p>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <table aria-describedby="leaderboard-message">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Defender</th>
+                <th scope="col">Score</th>
+                <th scope="col">Wave</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-rows">
+              <tr class="leaderboard-empty"><td colspan="4">Contacting defender network…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="leaderboard-status" aria-live="polite" aria-atomic="true">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p id="leaderboard-message">Contacting defender network…</p>
+          <p id="leaderboard-updated"></p>
+        </div>
+      </div>
+    </section>
+
     <section class="briefing" aria-labelledby="briefing-title">
       <p class="section-label">About the counter</p>
       <div>
@@ -69,7 +112,7 @@
       <p class="section-label">Anonymous telemetry</p>
       <div>
         <h2 id="privacy-title">What is sent</h2>
-        <p>SS: Zombie Rain submits an anonymous event when the player dies: a random event ID, difficulty, game build version, and event time. The game does not submit player names, account IDs, or platform identifiers. Cloudflare necessarily processes the requesting IP address to deliver, rate-limit, and protect the service; Havanna Directive does not write IP addresses to the death-event database.</p>
+        <p>SS: Zombie Rain submits an anonymous event when the player dies: a random event ID, difficulty, game build version, and event time. For leaderboards, the game submits the public Defender Callsign chosen by the player, a random installation ID, difficulty, and completed-run statistics. No email, store account, platform identifier, or real name is required. Cloudflare necessarily processes the requesting IP address to deliver, rate-limit, and protect the service; Havanna Directive does not write IP addresses to either gameplay database.</p>
       </div>
     </section>
   </main>
@@ -78,6 +121,6 @@
     <p>SS / Skyscraper Security</p>
     <p>© <span id="year"></span> Havanna Directive Ltd.</p>
   </footer>
-  <script src="script.js?v=20260815-2"></script>
+  <script src="script.js?v=20260815-3"></script>
 </body>
 </html>
