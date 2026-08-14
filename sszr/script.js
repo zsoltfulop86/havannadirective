@@ -33,7 +33,7 @@ async function loadCounters() {
     });
     counters.setAttribute("aria-busy", "false");
     message.textContent = "Containment network online";
-    updated.textContent = data.updated_at ? `Updated ${new Date(data.updated_at).toLocaleString()}` : "No casualties reported";
+    updated.textContent = data.updated_at ? `Updated ${new Date(data.updated_at).toLocaleString()}` : "No defender deaths reported";
   } catch (error) {
     console.error("Could not load SS: Zombie Rain counters", error);
     showUnavailable("Containment network temporarily unavailable");
@@ -42,4 +42,3 @@ async function loadCounters() {
 
 document.querySelector("#year").textContent = String(new Date().getFullYear());
 loadCounters();
-
