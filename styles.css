@@ -68,9 +68,8 @@ nav > a:hover, nav > a:focus-visible, .games-menu summary:hover, .games-menu sum
   border: 1px solid var(--line);
   box-shadow: 0 18px 45px rgba(0,0,0,.28);
 }
-.games-menu-panel a { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px 10px; opacity: .74; white-space: nowrap; transition: color .2s, opacity .2s, background .2s; }
+.games-menu-panel a { display: block; padding: 12px 10px; opacity: .74; white-space: nowrap; transition: color .2s, opacity .2s, background .2s; }
 .games-menu-panel a:hover, .games-menu-panel a:focus-visible { color: white; background: rgba(255,255,255,.06); opacity: 1; }
-.games-menu-panel span { color: var(--ice); }
 .games-menu summary:focus-visible, .games-menu-panel a:focus-visible { outline: 1px solid var(--ice); outline-offset: 3px; }
 .menu-toggle { display: none; }
 
@@ -83,7 +82,7 @@ nav > a:hover, nav > a:focus-visible, .games-menu summary:hover, .games-menu sum
     linear-gradient(0deg, rgba(7,10,15,.75) 0%, transparent 38%);
 }
 .hero-content { position: relative; z-index: 2; padding: 29vh 5vw 10vh; max-width: 920px; }
-.eyebrow, .section-number {
+.eyebrow, .section-label {
   margin: 0 0 34px;
   color: var(--ice);
   font: 500 11px "DM Mono", monospace;
@@ -123,7 +122,7 @@ h1 em, h2 em { color: var(--ice); font-family: Georgia, serif; font-weight: 400;
 .manifesto-copy .muted { color: #555960; }
 
 .game-section { padding: 120px 5vw; background: var(--snow); color: var(--ink); }
-.game-section .section-number, .studio-section .section-number { color: #6f7377; }
+.game-section .section-label, .studio-section .section-label { color: #6f7377; }
 .game-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; margin-bottom: 75px; }
 h2 { font-size: clamp(62px, 9vw, 142px); }
 .game-heading h2 { line-height: 1; }
@@ -167,7 +166,7 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
   color: #f2e8f8;
   background: radial-gradient(circle at 82% 15%, rgba(169, 65, 227, .2), transparent 30%), linear-gradient(145deg, #13081d, #07040d 70%);
 }
-.zombie-section .section-number { color: #65e4ef; }
+.zombie-section .section-label { color: #65e4ef; }
 .zombie-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; margin-bottom: 75px; }
 .zombie-heading h2 em { color: #d264f4; }
 .project-expansion { margin: 24px 0 0; color: #8d8197; font: 500 10px "DM Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }

@@ -24,7 +24,7 @@ header { display: flex; align-items: center; justify-content: space-between; pad
 .signal span:nth-child(2) { height: 100%; animation-delay: -.35s; }
 .signal span:nth-child(3) { height: 62%; animation-delay: -.7s; }
 @keyframes signal { to { height: 22%; opacity: .35; } }
-.eyebrow, .section-number { margin: 0 0 34px; color: var(--cyan); font: 500 11px "DM Mono", monospace; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow, .section-label { margin: 0 0 34px; color: var(--cyan); font: 500 11px "DM Mono", monospace; letter-spacing: .16em; text-transform: uppercase; }
 h1, h2 { margin: 0; font-weight: 500; letter-spacing: -.06em; line-height: .88; }
 h1 { max-width: 1200px; font-size: clamp(64px, 10.5vw, 165px); }
 h1 em { color: var(--violet); font-family: Georgia, serif; font-weight: 400; }
@@ -44,7 +44,7 @@ h1 em { color: var(--violet); font-family: Georgia, serif; font-weight: 400; }
 .briefing h2 { font-size: clamp(54px, 8vw, 120px); }
 .briefing div > p, .privacy div > p { max-width: 650px; color: #bcb0c6; font-size: 18px; line-height: 1.7; }
 .privacy { background: #b9c3bd; color: #0a0d12; }
-.privacy .section-number { color: #52645d; }
+.privacy .section-label { color: #52645d; }
 .privacy h2 { font-size: clamp(42px, 6vw, 88px); }
 .privacy div > p { color: #34423d; }
 footer { display: flex; justify-content: space-between; gap: 30px; padding: 55px 5vw 35px; color: #68606e; font: 10px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
@@ -69,4 +69,3 @@ footer p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .signal span { animation: none; }
 }
-
