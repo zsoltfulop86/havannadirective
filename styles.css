@@ -49,9 +49,29 @@ img { display: block; width: 100%; }
   object-fit: cover;
   border-radius: 50%;
 }
-nav { display: flex; gap: 32px; font: 500 11px "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
-nav a { opacity: .72; transition: opacity .2s; }
-nav a:hover { opacity: 1; }
+nav { display: flex; align-items: center; gap: 32px; font: 500 11px "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
+nav > a, .games-menu summary { opacity: .72; transition: opacity .2s; }
+nav > a:hover, nav > a:focus-visible, .games-menu summary:hover, .games-menu summary:focus-visible { opacity: 1; }
+.games-menu { position: relative; }
+.games-menu summary { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer; }
+.games-menu summary::-webkit-details-marker { display: none; }
+.games-menu summary::after { content: "+"; color: var(--ice); font-size: 14px; transition: transform .2s; }
+.games-menu[open] summary::after { transform: rotate(45deg); }
+.games-menu-panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: -18px;
+  display: grid;
+  min-width: 248px;
+  padding: 8px;
+  background: rgba(9,12,18,.97);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+}
+.games-menu-panel a { display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px 10px; opacity: .74; white-space: nowrap; transition: color .2s, opacity .2s, background .2s; }
+.games-menu-panel a:hover, .games-menu-panel a:focus-visible { color: white; background: rgba(255,255,255,.06); opacity: 1; }
+.games-menu-panel span { color: var(--ice); }
+.games-menu summary:focus-visible, .games-menu-panel a:focus-visible { outline: 1px solid var(--ice); outline-offset: 3px; }
 .menu-toggle { display: none; }
 
 .hero { position: relative; min-height: 100svh; overflow: hidden; }
@@ -209,8 +229,11 @@ footer p { margin: 0; }
 @media (max-width: 800px) {
   .site-header { padding: 22px; }
   .menu-toggle { display: block; color: white; border: 1px solid rgba(255,255,255,.4); background: transparent; padding: 9px 12px; font: 10px "DM Mono", monospace; text-transform: uppercase; }
-  nav { position: absolute; top: 75px; left: 20px; right: 20px; display: none; flex-direction: column; gap: 20px; padding: 25px; background: rgba(9,12,18,.96); border: 1px solid var(--line); }
+  nav { position: absolute; top: 75px; left: 20px; right: 20px; display: none; align-items: stretch; flex-direction: column; gap: 20px; padding: 25px; background: rgba(9,12,18,.96); border: 1px solid var(--line); }
   nav.open { display: flex; }
+  nav > a, .games-menu summary { width: fit-content; }
+  .games-menu-panel { position: static; min-width: 0; margin-top: 14px; padding: 4px 0 0 14px; background: transparent; border: 0; border-left: 1px solid var(--line); box-shadow: none; }
+  .games-menu-panel a { padding: 10px 8px; white-space: normal; }
   .hero-content { padding: 27vh 22px 100px; }
   .hero-copy { max-width: 420px; }
   .hero-index { display: none; }

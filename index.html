@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815-2">
+  <link rel="stylesheet" href="styles.css?v=20260815-3">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -26,7 +26,13 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Main navigation">
-      <a href="#game">Games</a>
+      <details class="games-menu">
+        <summary>Games</summary>
+        <div class="games-menu-panel">
+          <a href="#zombie-rain"><span aria-hidden="true">02</span>SS: Zombie Rain</a>
+          <a href="#game"><span aria-hidden="true">03</span>My Beautiful Winter</a>
+        </div>
+      </details>
       <a href="#studio">Studio</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -219,6 +225,6 @@
     <img src="" alt="">
   </dialog>
 
-  <script src="script.js?v=20260720-3"></script>
+  <script src="script.js?v=20260815-4"></script>
 </body>
 </html>

@@ -1,16 +1,34 @@
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#site-nav");
+const gamesMenu = document.querySelector(".games-menu");
 
 menuButton.addEventListener("click", function () {
   const isOpen = navigation.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
+  if (!isOpen) {
+    gamesMenu.removeAttribute("open");
+  }
 });
 
 navigation.querySelectorAll("a").forEach(function (link) {
   link.addEventListener("click", function () {
     navigation.classList.remove("open");
+    gamesMenu.removeAttribute("open");
     menuButton.setAttribute("aria-expanded", "false");
   });
+});
+
+document.addEventListener("click", function (event) {
+  if (gamesMenu.open && !gamesMenu.contains(event.target)) {
+    gamesMenu.removeAttribute("open");
+  }
+});
+
+gamesMenu.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    gamesMenu.removeAttribute("open");
+    gamesMenu.querySelector("summary").focus();
+  }
 });
 
 const observer = new IntersectionObserver(function (entries) {
