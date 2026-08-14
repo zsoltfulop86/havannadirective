@@ -106,6 +106,7 @@ h1 em, h2 em { color: var(--ice); font-family: Georgia, serif; font-weight: 400;
 .game-section .section-number, .studio-section .section-number { color: #6f7377; }
 .game-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; margin-bottom: 75px; }
 h2 { font-size: clamp(62px, 9vw, 142px); }
+.game-heading h2 { line-height: 1; }
 .game-heading h2 em, .studio-section h2 em { color: var(--signal); }
 .game-summary { padding-bottom: 10px; }
 .game-summary > p { max-width: 540px; margin: 0 0 30px; font-size: 18px; line-height: 1.65; color: #4e5154; }
