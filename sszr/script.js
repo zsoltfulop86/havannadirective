@@ -63,7 +63,27 @@ function isLeaderboardEntry(entry, expectedRank) {
     && Number.isInteger(entry.wave_reached)
     && entry.wave_reached >= 1
     && entry.wave_reached <= 15
+    && (entry.completion_time_ms === null
+      || (Number.isSafeInteger(entry.completion_time_ms)
+        && entry.completion_time_ms >= 1
+        && entry.completion_time_ms <= 86400000))
     && typeof entry.game_won === "boolean";
+}
+
+function formatCompletionTime(milliseconds) {
+  if (milliseconds === null) {
+    return "—";
+  }
+  const hours = Math.floor(milliseconds / 3600000);
+  const minutes = Math.floor(milliseconds / 60000) % 60;
+  const seconds = Math.floor(milliseconds / 1000) % 60;
+  const remainder = milliseconds % 1000;
+  const secondsText = String(seconds).padStart(2, "0");
+  const remainderText = String(remainder).padStart(3, "0");
+  if (hours > 0) {
+    return `${hours}:${String(minutes).padStart(2, "0")}:${secondsText}.${remainderText}`;
+  }
+  return `${minutes}:${secondsText}.${remainderText}`;
 }
 
 function validateLeaderboard(data) {
@@ -93,7 +113,7 @@ function renderLeaderboard() {
     const row = document.createElement("tr");
     row.className = "leaderboard-empty";
     const cell = document.createElement("td");
-    cell.colSpan = 4;
+    cell.colSpan = 5;
     cell.textContent = "No defenders have posted a personal best yet.";
     row.append(cell);
     leaderboardRows.append(row);
@@ -113,7 +133,9 @@ function renderLeaderboard() {
     score.textContent = numberFormat.format(entry.score);
     const wave = document.createElement("td");
     wave.textContent = entry.game_won ? "Victory" : `Wave ${entry.wave_reached}`;
-    row.append(rank, defender, score, wave);
+    const completionTime = document.createElement("td");
+    completionTime.textContent = formatCompletionTime(entry.completion_time_ms);
+    row.append(rank, defender, score, wave, completionTime);
     leaderboardRows.append(row);
   });
 }
@@ -126,7 +148,7 @@ function showLeaderboardUnavailable() {
   const row = document.createElement("tr");
   row.className = "leaderboard-empty";
   const cell = document.createElement("td");
-  cell.colSpan = 4;
+  cell.colSpan = 5;
   cell.textContent = "Leaderboard records could not be loaded.";
   row.append(cell);
   leaderboardRows.append(row);

@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815-4">
+  <link rel="stylesheet" href="styles.css?v=20260815-5">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -64,7 +64,7 @@
           <p class="section-label">Worldwide personal bests</p>
           <h2 id="leaderboards-title">Defender<br><em>records.</em></h2>
         </div>
-        <p>One best run per anonymous defender, difficulty, and season. Scores are calculated by the containment network from wave reached, rescues, eliminations, district integrity, and victory.</p>
+        <p>One best run per anonymous defender, difficulty, and season. Scores are calculated by the containment network from wave reached, rescues, eliminations, district integrity, and victory. Exact score ties are ordered by faster completion time.</p>
       </div>
 
       <div class="leaderboard-shell">
@@ -84,10 +84,11 @@
                 <th scope="col">Defender</th>
                 <th scope="col">Score</th>
                 <th scope="col">Wave</th>
+                <th scope="col">Time</th>
               </tr>
             </thead>
             <tbody id="leaderboard-rows">
-              <tr class="leaderboard-empty"><td colspan="4">Contacting defender network…</td></tr>
+              <tr class="leaderboard-empty"><td colspan="5">Contacting defender network…</td></tr>
             </tbody>
           </table>
         </div>
@@ -121,6 +122,6 @@
     <p>SS / Skyscraper Security</p>
     <p>© <span id="year"></span> Havanna Directive Ltd.</p>
   </footer>
-  <script src="script.js?v=20260815-3"></script>
+  <script src="script.js?v=20260815-4"></script>
 </body>
 </html>
