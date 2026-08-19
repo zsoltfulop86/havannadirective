@@ -68,7 +68,7 @@ nav > a:hover, nav > a:focus-visible, .games-menu summary:hover, .games-menu sum
   top: calc(100% + 16px);
   left: -18px;
   display: grid;
-  min-width: 248px;
+  min-width: 340px;
   padding: 8px;
   background: rgba(9,12,18,.97);
   border: 1px solid var(--line);
@@ -175,9 +175,8 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 }
 .zombie-section .section-label { color: #65e4ef; }
 .zombie-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; margin-bottom: 75px; }
+.zombie-heading h2 { font-size: clamp(50px, 6.6vw, 106px); line-height: .9; }
 .zombie-heading h2 em { color: #d264f4; }
-.project-expansion { margin: 24px 0 0; color: #8d8197; font: 500 10px "DM Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
-.project-expansion span { color: #67e3ed; }
 .zombie-summary { padding-bottom: 10px; }
 .zombie-summary p { max-width: 560px; margin: 0 0 20px; color: #bcb0c6; font-size: 17px; line-height: 1.65; }
 .zombie-summary .zombie-tagline { color: #67e3ed; font-size: 20px; font-weight: 600; }
@@ -249,6 +248,7 @@ footer p { margin: 0; }
   .manifesto, .game-section, .zombie-section, .studio-section, .contact-section { padding-left: 22px; padding-right: 22px; }
   .manifesto { padding-top: 100px; padding-bottom: 110px; }
   .game-heading, .zombie-heading, .studio-layout { grid-template-columns: 1fr; gap: 50px; }
+  .zombie-heading h2 { font-size: 54px; }
   .game-feature img { aspect-ratio: 16 / 9; min-height: 0; }
   .game-grid { grid-template-columns: 1fr; margin-top: 70px; }
   .game-card { min-height: 330px; padding: 28px; }

@@ -2,7 +2,7 @@
 
 Official studio website for [havannadirective.com](https://havannadirective.com), designed as a dependency-free static site for GitHub Pages.
 
-The `/sszr/` page displays live worldwide SS: Zombie Rain death totals from the Cloudflare Worker API at `https://sszr-api.silverkobra.workers.dev/v1/deaths`.
+The `/sszr/` page displays live worldwide Skyscraper Security: Zombie Rain death totals, leaderboards, and defender achievements from the Cloudflare Worker API.
 
 ## Local preview
 

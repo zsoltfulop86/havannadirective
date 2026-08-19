@@ -1,5 +1,6 @@
 const apiUrl = document.querySelector('meta[name="sszr-api-url"]').content;
 const leaderboardsApiUrl = document.querySelector('meta[name="sszr-leaderboards-api-url"]').content;
+const achievementsApiUrl = document.querySelector('meta[name="sszr-achievements-api-url"]').content;
 const counters = document.querySelector("#death-counters");
 const status = document.querySelector(".counter-status");
 const message = document.querySelector("#counter-message");
@@ -11,6 +12,12 @@ const leaderboardUpdated = document.querySelector("#leaderboard-updated");
 const leaderboardSeason = document.querySelector("#leaderboard-season");
 const leaderboardStatus = document.querySelector(".leaderboard-status");
 const leaderboardTabs = Array.from(document.querySelectorAll("[data-leaderboard-tab]"));
+const achievementDialog = document.querySelector("#achievement-dialog");
+const achievementDialogClose = document.querySelector("#achievement-dialog-close");
+const achievementDefender = document.querySelector("#achievement-defender");
+const achievementDialogList = document.querySelector("#achievement-dialog-list");
+const achievementList = document.querySelector("#achievement-list");
+let achievementCatalog = [];
 let activeDifficulty = "normal";
 let leaderboardData = { normal: [], hard: [] };
 
@@ -44,12 +51,18 @@ async function loadCounters() {
     message.textContent = "Containment network online";
     updated.textContent = data.updated_at ? `Updated ${new Date(data.updated_at).toLocaleString()}` : "No defender deaths reported";
   } catch (error) {
-    console.error("Could not load SS: Zombie Rain counters", error);
+    console.error("Could not load Skyscraper Security: Zombie Rain counters", error);
     showUnavailable("Containment network temporarily unavailable");
   }
 }
 
 function isLeaderboardEntry(entry, expectedRank) {
+  const hasValidAchievements = entry
+    && (entry.achievement_ids === undefined
+      || (Array.isArray(entry.achievement_ids)
+        && entry.achievement_ids.every(function (achievementId) {
+          return typeof achievementId === "string" && /^[a-z0-9_]{3,64}$/.test(achievementId);
+        })));
   return entry
     && Number.isInteger(entry.rank)
     && entry.rank === expectedRank
@@ -67,7 +80,8 @@ function isLeaderboardEntry(entry, expectedRank) {
       || (Number.isSafeInteger(entry.completion_time_ms)
         && entry.completion_time_ms >= 1
         && entry.completion_time_ms <= 86400000))
-    && typeof entry.game_won === "boolean";
+    && typeof entry.game_won === "boolean"
+    && hasValidAchievements;
 }
 
 function formatCompletionTime(milliseconds) {
@@ -128,7 +142,15 @@ function renderLeaderboard() {
     const rank = document.createElement("td");
     rank.textContent = String(entry.rank).padStart(2, "0");
     const defender = document.createElement("td");
-    defender.textContent = `${entry.display_name}  #${entry.public_tag}`;
+    const defenderButton = document.createElement("button");
+    defenderButton.className = "defender-achievements-button";
+    defenderButton.type = "button";
+    defenderButton.textContent = `${entry.display_name}  #${entry.public_tag}`;
+    defenderButton.setAttribute("aria-label", `View achievements for ${entry.display_name} number ${entry.public_tag}`);
+    defenderButton.addEventListener("click", function () {
+      openAchievementDialog(entry);
+    });
+    defender.append(defenderButton);
     const score = document.createElement("td");
     score.textContent = numberFormat.format(entry.score);
     const wave = document.createElement("td");
@@ -138,6 +160,98 @@ function renderLeaderboard() {
     row.append(rank, defender, score, wave, completionTime);
     leaderboardRows.append(row);
   });
+}
+
+function openAchievementDialog(entry) {
+  const unlockedIds = new Set(Array.isArray(entry.achievement_ids) ? entry.achievement_ids : []);
+  achievementDefender.textContent = `${entry.display_name}  #${entry.public_tag} · ${unlockedIds.size} / ${achievementCatalog.length} unlocked`;
+  achievementDialogList.replaceChildren();
+  if (!achievementCatalog.length) {
+    const unavailable = document.createElement("p");
+    unavailable.className = "achievement-catalog-status";
+    unavailable.textContent = "Achievement registry temporarily unavailable.";
+    achievementDialogList.append(unavailable);
+    achievementDialog.showModal();
+    return;
+  }
+  achievementCatalog.forEach(function (achievement) {
+    const item = document.createElement("article");
+    const unlocked = unlockedIds.has(achievement.id);
+    item.className = unlocked ? "achievement-record unlocked" : "achievement-record";
+    const statusLabel = document.createElement("span");
+    statusLabel.textContent = unlocked ? "Unlocked" : "Not published";
+    const title = document.createElement("h3");
+    title.textContent = achievement.title;
+    const description = document.createElement("p");
+    description.textContent = achievement.description;
+    item.append(statusLabel, title, description);
+    achievementDialogList.append(item);
+  });
+  achievementDialog.showModal();
+}
+
+function isAchievementDefinition(achievement) {
+  return achievement
+    && typeof achievement.achievement_id === "string"
+    && /^[a-z0-9_]{3,64}$/.test(achievement.achievement_id)
+    && typeof achievement.title === "string"
+    && achievement.title.length >= 1
+    && achievement.title.length <= 64
+    && typeof achievement.description === "string"
+    && achievement.description.length >= 1
+    && achievement.description.length <= 256;
+}
+
+function renderAchievementCatalog() {
+  achievementList.replaceChildren();
+  achievementCatalog.forEach(function (achievement) {
+    const item = document.createElement("article");
+    item.dataset.achievementId = achievement.id;
+    const title = document.createElement("h3");
+    title.textContent = achievement.title;
+    const description = document.createElement("p");
+    description.textContent = achievement.description;
+    item.append(title, description);
+    achievementList.append(item);
+  });
+}
+
+async function loadAchievementCatalog() {
+  try {
+    const response = await fetch(achievementsApiUrl, { headers: { accept: "application/json" } });
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}`);
+    }
+    const data = await response.json();
+    if (!data || !Array.isArray(data.achievements) || data.achievements.length > 100) {
+      throw new Error("API returned an invalid achievement catalog");
+    }
+    if (!data.achievements.every(isAchievementDefinition)) {
+      throw new Error("API returned an invalid achievement definition");
+    }
+    const uniqueIds = new Set(data.achievements.map(function (achievement) {
+      return achievement.achievement_id;
+    }));
+    if (uniqueIds.size !== data.achievements.length) {
+      throw new Error("API returned duplicate achievement definitions");
+    }
+    achievementCatalog = data.achievements.map(function (achievement) {
+      return {
+        id: achievement.achievement_id,
+        title: achievement.title,
+        description: achievement.description,
+      };
+    });
+    renderAchievementCatalog();
+  } catch (error) {
+    console.error("Could not load the Skyscraper Security: Zombie Rain achievement catalog", error);
+    achievementCatalog = [];
+    achievementList.replaceChildren();
+    const unavailable = document.createElement("p");
+    unavailable.className = "achievement-catalog-status";
+    unavailable.textContent = "Achievement registry temporarily unavailable.";
+    achievementList.append(unavailable);
+  }
 }
 
 function showLeaderboardUnavailable() {
@@ -169,7 +283,7 @@ async function loadLeaderboards() {
     leaderboardUpdated.textContent = data.updated_at ? `Updated ${new Date(data.updated_at).toLocaleString()}` : "";
     renderLeaderboard();
   } catch (error) {
-    console.error("Could not load SS: Zombie Rain leaderboards", error);
+    console.error("Could not load Skyscraper Security: Zombie Rain leaderboards", error);
     showLeaderboardUnavailable();
   }
 }
@@ -181,6 +295,16 @@ leaderboardTabs.forEach(function (tab) {
   });
 });
 
+achievementDialogClose.addEventListener("click", function () {
+  achievementDialog.close();
+});
+
+achievementDialog.addEventListener("click", function (event) {
+  if (event.target === achievementDialog) {
+    achievementDialog.close();
+  }
+});
+
 document.querySelector("#year").textContent = String(new Date().getFullYear());
 loadCounters();
-loadLeaderboards();
+loadAchievementCatalog().finally(loadLeaderboards);
