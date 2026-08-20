@@ -159,7 +159,7 @@ function renderLeaderboard() {
     wave.textContent = entry.game_won ? "Victory" : `Wave ${entry.wave_reached}`;
     const completionTime = document.createElement("td");
     completionTime.textContent = formatCompletionTime(entry.completion_time_ms);
-    row.append(rank, defender, score, wave, completionTime, achievements);
+    row.append(rank, defender, achievements, score, wave, completionTime);
     leaderboardRows.append(row);
   });
 }
