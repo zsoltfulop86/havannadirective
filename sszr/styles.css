@@ -62,8 +62,10 @@ h1 em { color: var(--violet); font-family: Georgia, serif; font-weight: 400; }
 .leaderboard-table-wrap td { padding: 18px 26px; color: #d4c9dc; border-bottom: 1px solid rgba(210, 100, 244, .12); font: 500 14px "DM Mono", monospace; }
 .leaderboard-table-wrap td:first-child { color: var(--cyan); }
 .leaderboard-table-wrap td:nth-child(2) { color: var(--paper); }
-.defender-achievements-button { padding: 0 0 3px; color: inherit; background: transparent; border: 0; border-bottom: 1px solid transparent; cursor: pointer; font: inherit; letter-spacing: inherit; text-align: left; }
-.defender-achievements-button:hover, .defender-achievements-button:focus-visible { color: var(--cyan); border-bottom-color: currentColor; outline: 0; }
+.defender-record { display: flex; align-items: center; gap: 18px; min-width: 300px; }
+.defender-name { min-width: 0; overflow-wrap: anywhere; }
+.defender-achievements-button { flex: 0 0 auto; padding: 8px 11px; color: var(--cyan); background: rgba(103, 227, 237, .055); border: 1px solid rgba(103, 227, 237, .46); cursor: pointer; font: 500 9px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; transition: color .2s ease, border-color .2s ease, background .2s ease; }
+.defender-achievements-button:hover, .defender-achievements-button:focus-visible { color: var(--ink); background: var(--cyan); border-color: var(--cyan); outline: 0; }
 .leaderboard-table-wrap td:nth-child(3), .leaderboard-table-wrap td:nth-child(4), .leaderboard-table-wrap td:nth-child(5) { text-align: right; }
 .leaderboard-table-wrap td:nth-child(3) { color: var(--violet); font-size: 16px; }
 .leaderboard-table-wrap td:nth-child(5) { color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -152,6 +154,8 @@ footer a:hover, footer a:focus-visible { color: var(--cyan); }
   .leaderboard-table-wrap th:nth-child(4), .leaderboard-table-wrap td:nth-child(4) { display: none; }
   .leaderboard-table-wrap td { font-size: 11px; }
   .leaderboard-table-wrap td:nth-child(3) { font-size: 12px; }
+  .defender-record { align-items: flex-start; flex-direction: column; gap: 8px; min-width: 145px; }
+  .defender-achievements-button { padding: 7px 9px; font-size: 8px; }
   .leaderboard-status { align-items: flex-start; flex-wrap: wrap; padding: 16px 18px; }
   .leaderboard-status #leaderboard-updated { width: 100%; margin-left: 19px; }
   footer { flex-direction: column; padding-left: 22px; padding-right: 22px; }

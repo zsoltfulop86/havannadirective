@@ -142,15 +142,21 @@ function renderLeaderboard() {
     const rank = document.createElement("td");
     rank.textContent = String(entry.rank).padStart(2, "0");
     const defender = document.createElement("td");
+    const defenderRecord = document.createElement("div");
+    defenderRecord.className = "defender-record";
+    const defenderName = document.createElement("span");
+    defenderName.className = "defender-name";
+    defenderName.textContent = `${entry.display_name}  #${entry.public_tag}`;
     const defenderButton = document.createElement("button");
     defenderButton.className = "defender-achievements-button";
     defenderButton.type = "button";
-    defenderButton.textContent = `${entry.display_name}  #${entry.public_tag}`;
+    defenderButton.textContent = "Achievements";
     defenderButton.setAttribute("aria-label", `View achievements for ${entry.display_name} number ${entry.public_tag}`);
     defenderButton.addEventListener("click", function () {
       openAchievementDialog(entry);
     });
-    defender.append(defenderButton);
+    defenderRecord.append(defenderName, defenderButton);
+    defender.append(defenderRecord);
     const score = document.createElement("td");
     score.textContent = numberFormat.format(entry.score);
     const wave = document.createElement("td");
