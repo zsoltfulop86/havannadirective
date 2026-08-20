@@ -127,7 +127,7 @@ function renderLeaderboard() {
     const row = document.createElement("tr");
     row.className = "leaderboard-empty";
     const cell = document.createElement("td");
-    cell.colSpan = 5;
+    cell.colSpan = 6;
     cell.textContent = "No defenders have posted a personal best yet.";
     row.append(cell);
     leaderboardRows.append(row);
@@ -142,11 +142,8 @@ function renderLeaderboard() {
     const rank = document.createElement("td");
     rank.textContent = String(entry.rank).padStart(2, "0");
     const defender = document.createElement("td");
-    const defenderRecord = document.createElement("div");
-    defenderRecord.className = "defender-record";
-    const defenderName = document.createElement("span");
-    defenderName.className = "defender-name";
-    defenderName.textContent = `${entry.display_name}  #${entry.public_tag}`;
+    defender.textContent = `${entry.display_name}  #${entry.public_tag}`;
+    const achievements = document.createElement("td");
     const defenderButton = document.createElement("button");
     defenderButton.className = "defender-achievements-button";
     defenderButton.type = "button";
@@ -155,15 +152,14 @@ function renderLeaderboard() {
     defenderButton.addEventListener("click", function () {
       openAchievementDialog(entry);
     });
-    defenderRecord.append(defenderName, defenderButton);
-    defender.append(defenderRecord);
+    achievements.append(defenderButton);
     const score = document.createElement("td");
     score.textContent = numberFormat.format(entry.score);
     const wave = document.createElement("td");
     wave.textContent = entry.game_won ? "Victory" : `Wave ${entry.wave_reached}`;
     const completionTime = document.createElement("td");
     completionTime.textContent = formatCompletionTime(entry.completion_time_ms);
-    row.append(rank, defender, score, wave, completionTime);
+    row.append(rank, defender, score, wave, completionTime, achievements);
     leaderboardRows.append(row);
   });
 }
@@ -268,7 +264,7 @@ function showLeaderboardUnavailable() {
   const row = document.createElement("tr");
   row.className = "leaderboard-empty";
   const cell = document.createElement("td");
-  cell.colSpan = 5;
+  cell.colSpan = 6;
   cell.textContent = "Leaderboard records could not be loaded.";
   row.append(cell);
   leaderboardRows.append(row);
