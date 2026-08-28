@@ -227,6 +227,50 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 footer { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding: 80px 5vw 35px; color: #686d73; font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
 .footer-brand { color: var(--paper); }
 footer p { margin: 0; }
+.footer-meta { display: flex; flex-direction: column; align-items: end; gap: 10px; text-align: right; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+footer a:not(.brand) { text-decoration: underline; text-underline-offset: 4px; }
+footer a:not(.brand):hover, footer a:not(.brand):focus-visible { color: var(--ice); }
+
+.document-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 4vw;
+  background: rgba(9,12,18,.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.document-tools { display: flex; align-items: center; gap: 22px; color: rgba(244,241,233,.72); font: 500 10px "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
+.document-tools > span { color: white; }
+.document-tools a { padding-bottom: 5px; border-bottom: 1px solid transparent; }
+.document-tools a:hover, .document-tools a:focus-visible { color: white; border-bottom-color: var(--ice); }
+.document-main { padding-bottom: 90px; }
+.document-hero { padding: 120px 5vw 90px; }
+.document-hero h1 { max-width: 1100px; font-size: clamp(58px, 9vw, 138px); }
+.document-hero h1 em { color: var(--ice); }
+.document-intro { max-width: 720px; margin: 38px 0 0; color: rgba(244,241,233,.72); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; }
+.document-language { padding: 100px 5vw 25px; border-top: 1px solid var(--line); scroll-margin-top: 78px; }
+.document-language-heading { display: grid; grid-template-columns: .75fr 1.25fr; gap: 8vw; align-items: end; margin-bottom: 55px; }
+.document-language-heading h2 { font-size: clamp(48px, 7vw, 104px); }
+.document-language-heading p { max-width: 620px; margin: 0 0 8px; color: #8e949c; font-size: 16px; line-height: 1.7; }
+.document-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.document-card { min-height: 250px; padding: 38px; background: #0d1117; }
+.document-card.wide { grid-column: 1 / -1; }
+.document-card h3 { margin: 0 0 23px; color: var(--ice); font: 500 16px/1.3 "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.document-card p, .document-card li, .document-card dd { color: #b8bdc4; font-size: 15px; line-height: 1.75; }
+.document-card p { margin: 0 0 16px; }
+.document-card p:last-child { margin-bottom: 0; }
+.document-card a { color: var(--ice); text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.document-card dl { display: grid; grid-template-columns: minmax(155px, .45fr) 1fr; gap: 13px 24px; margin: 0; }
+.document-card dt { color: #777f88; font: 500 10px/1.6 "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.document-card dd { margin: 0; }
+.document-card ul { margin: 0; padding-left: 20px; }
+.document-note { margin-top: 22px; color: #777f88; font-size: 13px; line-height: 1.65; }
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
@@ -267,6 +311,19 @@ footer p { margin: 0; }
   .contact-links { align-items: start; width: 100%; }
   .contact-link { overflow-wrap: anywhere; }
   footer { flex-direction: column; align-items: start; padding-left: 22px; padding-right: 22px; }
+  .footer-meta { align-items: start; text-align: left; }
+  .footer-links { justify-content: flex-start; }
+  .document-header { padding: 14px 22px; }
+  .document-tools { gap: 12px; }
+  .document-tools .document-home-label { display: none; }
+  .document-hero { padding: 85px 22px 70px; }
+  .document-language { padding: 75px 22px 20px; }
+  .document-language-heading { grid-template-columns: 1fr; gap: 28px; margin-bottom: 40px; }
+  .document-grid { grid-template-columns: 1fr; }
+  .document-card { min-height: 0; padding: 28px 24px; }
+  .document-card.wide { grid-column: auto; }
+  .document-card dl { grid-template-columns: 1fr; gap: 5px; }
+  .document-card dd + dt { margin-top: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

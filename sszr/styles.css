@@ -111,6 +111,7 @@ footer { display: flex; justify-content: space-between; gap: 30px; padding: 55px
 footer p { margin: 0; }
 footer a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
 footer a:hover, footer a:focus-visible { color: var(--cyan); }
+.footer-meta { display: flex; flex-direction: column; align-items: end; gap: 10px; text-align: right; }
 
 .policy-page { padding-bottom: 70px; }
 .policy-hero { padding: 110px 5vw 75px; border-bottom: 1px solid var(--line); }
@@ -159,6 +160,7 @@ footer a:hover, footer a:focus-visible { color: var(--cyan); }
   .leaderboard-status { align-items: flex-start; flex-wrap: wrap; padding: 16px 18px; }
   .leaderboard-status #leaderboard-updated { width: 100%; margin-left: 19px; }
   footer { flex-direction: column; padding-left: 22px; padding-right: 22px; }
+  .footer-meta { align-items: start; text-align: left; }
   .policy-hero { padding: 85px 22px 60px; }
   .policy-grid { grid-template-columns: 1fr; margin: 0 22px; }
   .policy-grid article { min-height: 0; padding: 30px 24px; }
