@@ -200,6 +200,24 @@ h2 { font-size: clamp(62px, 9vw, 142px); }
 .lightbox::backdrop { background: rgba(2, 2, 5, .92); backdrop-filter: blur(8px); }
 .lightbox img { width: 100%; max-height: 92vh; object-fit: contain; }
 .lightbox-close { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 10px 13px; border: 1px solid rgba(255,255,255,.35); color: white; background: rgba(5,3,8,.86); font: 500 10px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.press-section {
+  padding: 130px 5vw;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(118deg, rgba(103,227,237,.09), transparent 38%),
+    #0d1217;
+}
+.press-section .section-label { color: var(--ice); }
+.press-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; align-items: end; }
+.press-section h2 em { color: var(--ice); }
+.press-kicker { margin: 0 0 22px; color: #6f7d82; font: 500 10px "DM Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
+.press-card { padding: 30px 0 34px; border-top: 1px solid rgba(167,213,223,.42); border-bottom: 1px solid rgba(167,213,223,.18); }
+.press-source { display: flex; justify-content: space-between; gap: 24px; color: var(--ice); font: 500 10px "DM Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+.press-card h3 { max-width: 780px; margin: 48px 0 22px; font-size: clamp(30px, 4vw, 58px); font-weight: 500; letter-spacing: -.045em; line-height: 1.03; }
+.press-card p { max-width: 720px; margin: 0 0 38px; color: #9ca6aa; font-size: 17px; line-height: 1.65; }
+.press-link { display: inline-flex; align-items: center; gap: 34px; padding-bottom: 8px; border-bottom: 1px solid rgba(167,213,223,.55); color: var(--ice); font: 500 11px "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
+.press-link span { font-size: 17px; transition: transform .2s; }
+.press-link:hover span { transform: translate(3px, -3px); }
 .studio-section { background: #b9c3bd; color: var(--ink); padding: 130px 5vw; }
 .studio-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8vw; align-items: end; }
 .studio-copy { max-width: 580px; padding-bottom: 12px; }
@@ -289,9 +307,9 @@ footer a:not(.brand):hover, footer a:not(.brand):focus-visible { color: var(--ic
   .hero-content { padding: 27vh 22px 100px; }
   .hero-copy { max-width: 420px; }
   .hero-index { display: none; }
-  .manifesto, .game-section, .zombie-section, .studio-section, .contact-section { padding-left: 22px; padding-right: 22px; }
+  .manifesto, .game-section, .zombie-section, .press-section, .studio-section, .contact-section { padding-left: 22px; padding-right: 22px; }
   .manifesto { padding-top: 100px; padding-bottom: 110px; }
-  .game-heading, .zombie-heading, .studio-layout { grid-template-columns: 1fr; gap: 50px; }
+  .game-heading, .zombie-heading, .press-layout, .studio-layout { grid-template-columns: 1fr; gap: 50px; }
   .zombie-heading h2 { font-size: 54px; }
   .game-feature img { aspect-ratio: 16 / 9; min-height: 0; }
   .game-grid { grid-template-columns: 1fr; margin-top: 70px; }
