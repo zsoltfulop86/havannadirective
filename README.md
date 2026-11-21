@@ -2,9 +2,9 @@
 
 Official studio website for [havannadirective.com](https://havannadirective.com), designed as a dependency-free static site for GitHub Pages.
 
-The `/sszr/` page displays live worldwide Skyscraper Security: Zombie Rain death totals, leaderboards, and defender achievements from the Cloudflare Worker API.
+The `/sszr/` page links to Steam and explains where players can find Skyscraper Security: Zombie Rain rankings and achievements. It makes no requests to the legacy records API.
 
-The `/legal/` and `/privacy/` pages provide the studio's English legal notice and website privacy information. Their complete Hungarian translations are under `/hu/impresszum/` and `/hu/adatvedelem/`. The more specific `/sszr/privacy/` notice covers optional game telemetry and Online Records.
+The `/legal/` and `/privacy/` pages provide the studio's English legal notice and website privacy information. Their complete Hungarian translations are under `/hu/impresszum/` and `/hu/adatvedelem/`. The more specific `/sszr/privacy/` notice covers Steam features, local saves, and legacy records from earlier builds.
 
 ## Local preview
 

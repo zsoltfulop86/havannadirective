@@ -3,22 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Worldwide anonymous player-death counter for Skyscraper Security: Zombie Rain.">
+  <meta name="description" content="Steam achievements and solo rankings for Skyscraper Security: Zombie Rain.">
   <meta name="theme-color" content="#07040d">
-  <meta name="sszr-api-url" content="https://sszr-api.silverkobra.workers.dev/v1/deaths">
-  <meta name="sszr-leaderboards-api-url" content="https://sszr-api.silverkobra.workers.dev/v1/leaderboards">
-  <meta name="sszr-achievements-api-url" content="https://sszr-api.silverkobra.workers.dev/v1/achievements">
-  <meta property="og:title" content="Skyscraper Security: Zombie Rain — Worldwide Defender Deaths">
-  <meta property="og:description" content="The live worldwide player-death counter for Skyscraper Security: Zombie Rain.">
+  <meta property="og:title" content="Skyscraper Security: Zombie Rain — Steam Rankings">
+  <meta property="og:description" content="Compare solo Lockdown and Infiltrate runs and track achievements on Steam.">
   <meta property="og:image" content="https://havannadirective.com/assets/zombie-rain-01.png">
   <meta property="og:url" content="https://havannadirective.com/sszr/">
   <meta property="og:type" content="website">
-  <title>Worldwide Defender Deaths — Skyscraper Security: Zombie Rain</title>
+  <title>Steam Rankings — Skyscraper Security: Zombie Rain</title>
   <link rel="icon" href="../assets/crow-favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260828-1">
+  <link rel="stylesheet" href="styles.css?v=20261121-1">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -30,126 +27,43 @@
     <a class="back-link" href="../#zombie-rain">Back to game <span>↖</span></a>
   </header>
 
-  <main>
-    <section class="counter-hero" aria-labelledby="page-title">
-      <div class="signal" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="eyebrow">Worldwide defender deaths · Live telemetry</p>
-      <h1 id="page-title">Every defender<br><em>leaves a mark.</em></h1>
-      <p class="intro">Anonymous player deaths recorded across Skyscraper Security: Zombie Rain. District Integrity losses and successful extractions are excluded.</p>
-
-      <div class="counter-grid" aria-live="polite" aria-busy="true" id="death-counters">
-        <article class="total-card">
-          <span class="counter-label">Total defender deaths</span>
-          <strong data-counter="total">—</strong>
-        </article>
-        <article>
-          <span class="counter-label">Normal</span>
-          <strong data-counter="normal">—</strong>
-        </article>
-        <article>
-          <span class="counter-label">Hard</span>
-          <strong data-counter="hard">—</strong>
-        </article>
-      </div>
-
-      <div class="counter-status">
-        <span class="status-dot" aria-hidden="true"></span>
-        <p id="counter-message">Contacting containment network…</p>
-        <p id="counter-updated"></p>
-      </div>
+  <main class="policy-page">
+    <section class="policy-hero" aria-labelledby="page-title">
+      <p class="eyebrow">Skyscraper Security: Zombie Rain</p>
+      <h1 id="page-title">Steam<br><em>rankings.</em></h1>
+      <p class="intro">In the full game, open Leaderboards from the main menu to compare solo runs in Lockdown and Infiltrate on Normal and Hard. Enable Ranked Scores in the game settings to submit your personal bests through Steam.</p>
+      <nav class="steam-links" aria-label="Steam store pages">
+        <a href="https://store.steampowered.com/app/4262250/">Full game on Steam ↗</a>
+        <a href="https://store.steampowered.com/app/5153150/">Play the free demo ↗</a>
+      </nav>
     </section>
-
-    <section class="leaderboards" aria-labelledby="leaderboards-title">
-      <div class="leaderboards-heading">
-        <div>
-          <p class="section-label">Worldwide personal bests</p>
-          <h2 id="leaderboards-title">Defender<br><em>records.</em></h2>
-        </div>
-        <p>One best run per anonymous defender, difficulty, and season. Scores are calculated by the containment network from wave reached, rescues, eliminations, district integrity, and victory. Use the Achievements column to inspect a defender's published records.</p>
-      </div>
-
-      <div class="leaderboard-shell">
-        <div class="leaderboard-toolbar">
-          <div class="leaderboard-tabs" role="tablist" aria-label="Leaderboard difficulty">
-            <button type="button" role="tab" aria-selected="true" data-leaderboard-tab="normal">Normal</button>
-            <button type="button" role="tab" aria-selected="false" data-leaderboard-tab="hard">Hard</button>
-          </div>
-          <p id="leaderboard-season">Preseason 1 · Top 100</p>
-        </div>
-
-        <div class="leaderboard-table-wrap">
-          <table aria-describedby="leaderboard-message">
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Defender</th>
-                <th scope="col">Achievements</th>
-                <th scope="col">Score</th>
-                <th scope="col">Wave</th>
-                <th scope="col">Time</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-rows">
-              <tr class="leaderboard-empty"><td colspan="6">Contacting defender network…</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="leaderboard-status" aria-live="polite" aria-atomic="true">
-          <span class="status-dot" aria-hidden="true"></span>
-          <p id="leaderboard-message">Contacting defender network…</p>
-          <p id="leaderboard-updated"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="achievements" aria-labelledby="achievements-title">
-      <div class="achievements-heading">
-        <div>
-          <p class="section-label">Platform-independent milestones</p>
-          <h2 id="achievements-title">Defender<br><em>achievements.</em></h2>
-        </div>
-        <p>Achievements are tracked locally by the game on every storefront. With Online Records enabled, unlocked achievement IDs are also mirrored to a defender's public leaderboard record.</p>
-      </div>
-
-      <div class="achievement-list" id="achievement-list" aria-live="polite">
-        <p class="achievement-catalog-status">Contacting achievement registry…</p>
-      </div>
-    </section>
-
-    <section class="briefing" aria-labelledby="briefing-title">
-      <p class="section-label">About the counter</p>
-      <div>
-        <h2 id="briefing-title">The rain<br>keeps falling.</h2>
-        <p>Every count represents a player-controlled defender brought down during a Normal or Hard run. One event ID is accepted once, even when an offline report is retried.</p>
-      </div>
-    </section>
-
-    <section class="privacy" aria-labelledby="privacy-title">
-      <p class="section-label">Anonymous telemetry</p>
-      <div>
-        <h2 id="privacy-title">What is sent</h2>
-        <p>Online Records is optional. Skyscraper Security: Zombie Rain can submit anonymous defender deaths, account-free leaderboard scores, and unlocked achievement IDs when the player enables it. No email, store account, platform identifier, or real name is required. <a href="privacy/">Read the full privacy information.</a></p>
-      </div>
+    <section class="policy-grid" aria-label="Rankings and achievements">
+      <article>
+        <h2>Lockdown</h2>
+        <p>Defend the district through escalating waves. Scores reflect waves reached, rescued civilians, eliminations, district integrity, and victory.</p>
+      </article>
+      <article>
+        <h2>Infiltrate</h2>
+        <p>Extract from each floor and take down the core. Eliminations, coins, tokens, and keepsakes contribute to your score. Faster completions break ties between equal victory scores.</p>
+      </article>
+      <article>
+        <h2>Achievements</h2>
+        <p>Open Achievements from the main menu to follow your progress. The full game has 32 achievements, and the demo has six. Steam syncs earned achievements to your account.</p>
+      </article>
+      <article>
+        <h2>Legacy records</h2>
+        <p>The studio website has retired its public death counter, achievement catalog, and callsign rankings. Visit the <a href="privacy/">game privacy notice</a> for details about current and earlier builds.</p>
+      </article>
     </section>
   </main>
 
   <footer>
     <p>Skyscraper Security: Zombie Rain</p>
     <div class="footer-meta">
-      <p>© <span id="year"></span> Havanna Directive Kft.</p>
-      <p><a href="privacy/">Online Records privacy</a> · <a href="../privacy/">Site privacy</a> · <a href="../legal/">Legal notice</a></p>
+      <p>© 2026 Havanna Directive Kft.</p>
+      <p><a href="privacy/">Game privacy</a> · <a href="../privacy/">Site privacy</a> · <a href="../legal/">Legal notice</a></p>
     </div>
   </footer>
 
-  <dialog class="achievement-dialog" id="achievement-dialog" aria-labelledby="achievement-dialog-title">
-    <button class="dialog-close" id="achievement-dialog-close" type="button" aria-label="Close defender achievements">Close ×</button>
-    <p class="section-label">Public defender record</p>
-    <h2 id="achievement-dialog-title">Achievements</h2>
-    <p class="achievement-defender" id="achievement-defender"></p>
-    <div class="achievement-dialog-list" id="achievement-dialog-list"></div>
-  </dialog>
-
-  <script src="script.js?v=20260820-3"></script>
 </body>
 </html>
